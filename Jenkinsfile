@@ -1,6 +1,6 @@
 node ('node1'){
-  stage('initial'){
-    echo "OK"
+  stage('Checkout code'){
+    git 'https://github.com/egormin/test_pipeline'
   }
    stage('build'){
     echo "OK"
