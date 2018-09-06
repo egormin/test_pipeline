@@ -1,1 +1,3 @@
-
+stage('initial'){
+  echo "OK"
+}
