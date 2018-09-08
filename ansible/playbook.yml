@@ -19,4 +19,4 @@
 
 
   post_tasks:
-  - \shell: echo 'Finish'
+  - shell: echo 'Finish'
