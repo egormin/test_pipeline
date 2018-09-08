@@ -7,6 +7,7 @@ node ('node1'){
     parallel 'Unit tests': {
                 stage("Runing unit tests") {
        sh "echo AAA"
+                   sleep 5
                 }
        stage("Runing func tests") {
          sh "echo BBB"
