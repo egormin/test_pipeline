@@ -3,14 +3,15 @@ node ('node1'){
   stage('Checkout code'){
     git 'https://github.com/egormin/test_pipeline'
   }
-       parallel(
-      a: {
-        echo "This is branch a"
-      },
-      b: {
-        echo "This is branch b"
-      }
-    )
+      
+    parallel 'Unit tests': {
+                stage("Runing unit tests") {
+       sh "This is branch a"
+                }
+       stage("Runing func tests") {
+       sh "This is branch b"
+                }
+
       
       
   stage('Ansible syntax checking'){   
