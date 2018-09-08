@@ -2,6 +2,9 @@ node ('node1'){
   stage('Checkout code'){
     git 'https://github.com/egormin/test_pipeline'
   }
+  timestamps {
+    sh "yum repolist"
+ }
   stage('Ansible syntax checking'){   
        ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml', extras: '--syntax-check'
   } 
