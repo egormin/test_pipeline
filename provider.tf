@@ -4,7 +4,7 @@ provider "aws" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDklmF2hIGSc/cQk53ZetYI5RcEod3I5FACpL9U/XQtu2xoQJpidPQp3w0zbCz3WY5LmN8bPFeQ9urbjbkma2dMsAq0p/VzG0cLQwVvW9CwOe+1rwpZF7+j0hV5lSfJV1AqmCTOOz1dYY384auFnXPYYInYBxOp0UVO0WqBANAcniylNJeyIVzwAZyY3e72sZUGSOsHXicAH+cXfemCUaVvZ6BfJi0A0CESoZO+o60wJYY/v4iIpwnCbI7U9EldSmFrXkEozzaZouFCgqrptluw9jyMXW154Hs1ttTXTfmSjtmZoPLW3h/qVfdn8BxZ3iZzhe6rQ+9vE8a3WNDfJ/gB root@TeamCityServer"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJwfn8o0VLAzYp0F+jFrXc23/qy/nwoA/ondusbEkQ1P8yZJNHNNhc6xxP7QOZTRWHy/JJTH2wh0vK6suoi1mQN5WutWax10ycm06neAeW6OoDHYS+aQ7iO/QHMayLsDKsJoYeXKfzdGs7ieHxOCvHKew8LfV1gdERdMIJMFAf5LIeg+NwSWgmmi3oXtcLfwxRk424bKM9nddc9ll2M7jy9uJIFW53XWO8x29sAxpBTFLxJ64X7AinoYS70uhlTDD2qEAPCSnU1tPpRIVjmiIdb5G8fFJAn6okiVOimvxk5vjq+swYmoJWe+SkDq9kVguKLTYgQzRrO2b79+k3IRCr build@instance-1"
 }
 
 resource "aws_security_group" "allow_ssh" {
