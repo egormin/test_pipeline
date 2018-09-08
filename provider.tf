@@ -32,7 +32,3 @@ resource "aws_instance" "Cenos7" {
   }
   security_groups = [ "allow_ssh" ]
 }
-
-output "ip" {
-  value = "${aws_eip.ip.public_ip}"
-}
