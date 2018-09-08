@@ -4,7 +4,7 @@ node ('node1'){
   }
    stage('Deploy instance'){
     sh "terraform apply -auto-approve"
-    sleep 15
+    sleep 20
   }
    stage('Check report generation'){
     echo "OK"
