@@ -9,7 +9,7 @@ node ('node1'){
     echo "OK"
   }
    stage('Ansible'){
-   ansiblePlaybook inventory: 'ansible/', playbook: 'ansible/'
+   ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
   }
   stage('Destroy instance'){
     //sh "terraform destroy -auto-approve"
