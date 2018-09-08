@@ -19,4 +19,9 @@ node ('node1'){
     //echo "OK"
     }
   }
+  post {
+    always {
+      sh "terraform destroy -auto-approve"
+    }
+  }
 }
