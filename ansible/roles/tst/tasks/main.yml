@@ -3,6 +3,10 @@
   become: yes
 
 - name: Install Epel-release repo
+  yum: name=epel-release
+  become: yes
+  
+- name: Install Epel-release repo
   yum: name=nano
   become: yes
 
