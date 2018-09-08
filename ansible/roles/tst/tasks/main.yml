@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install Epel-release repo
-  yum: name=epel-release
+  yum: name=nano
   become: yes
 
 - name: Install python-pip
