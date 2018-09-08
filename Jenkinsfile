@@ -5,6 +5,9 @@ node ('node1'){
   stage('Init Terraform'){
    sh "id"
   }
+  stage('Init Terraform'){
+   sh "echo $PATH"
+  }
    stage('Init Terraform'){
    sh "terraform init"
   }
