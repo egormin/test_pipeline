@@ -5,8 +5,8 @@ node ('node1'){
    stage('Init Terraform'){
    sh "terraform init"
   }
-   stage('test'){
-    echo "OK"
+   stage('Deploy instance'){
+    sh "terraform apply -auto-approve"
   }
    stage('deploy'){
     echo "OK"
