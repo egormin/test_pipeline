@@ -3,7 +3,7 @@ node ('node1'){
     git 'https://github.com/egormin/test_pipeline'
   }
   stage('Init Terraform'){
-   sh "id"
+   sh "hostname"
   }
   stage('Init Terraform'){
    sh "echo $PATH"
