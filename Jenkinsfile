@@ -12,7 +12,7 @@ node ('node1'){
    ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
   }
   stage('Destroy instance'){
-    //sh "terraform destroy -auto-approve"
-    echo "OK"
+    sh "terraform destroy -auto-approve"
+    //echo "OK"
   }
 }
