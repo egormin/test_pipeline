@@ -3,7 +3,7 @@ node ('node1'){
     git 'https://github.com/egormin/test_pipeline'
   }
   stage('Ansible lint checking'){
-    sh "ansible-lint *.yml; ansible-lint roles"
+    sh "ansible-lint ansible/*.yml;ansible-lint ansible/roles"
   }  
    stage('Deploy instance'){
     sh "terraform apply -auto-approve"
