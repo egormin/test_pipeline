@@ -12,7 +12,7 @@
   - shell: echo 'Running'
   
   - name: print to stdout
-    command: echo "hello"
+    command: "uname -a"
     register: hello
 
   - debug: msg="{{ hello.stdout }}"
