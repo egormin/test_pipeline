@@ -5,7 +5,7 @@ node ('node1'){
    stage('Deploy instance'){
     sh "terraform apply -auto-approve"
   }
-   stage('deploy'){
+   stage('Check report generation'){
     echo "OK"
   }
    stage('Ansible'){
