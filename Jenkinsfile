@@ -6,10 +6,10 @@ node ('node1'){
       
     parallel 'Unit tests': {
                 stage("Runing unit tests") {
-       sh "This is branch a"
+       sh "echo AAA"
                 }
        stage("Runing func tests") {
-       sh "This is branch b"
+         sh "echo BBB"
                 }
     }
 
