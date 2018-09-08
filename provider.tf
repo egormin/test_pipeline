@@ -9,7 +9,7 @@ resource "aws_key_pair" "deployer" {
 
 resource "aws_security_group" "allow_ssh" {
   name        = "allow_ssh"
-  description = "Allow all inbound traffic"
+  description = "Allow only ssh traffic"
 
   ingress {
     from_port   = 22
@@ -24,7 +24,7 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_instance" "Cenos7" {
-  ami           = "ami-0cf31d971a3ca20d6"
+  ami           = "ami-9c0638f9"
   instance_type = "t2.micro"
   key_name = "deployer-key"
   tags {
