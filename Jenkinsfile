@@ -10,6 +10,7 @@ node ('node1'){
     echo "OK"
   }
    stage('Ansible'){
+   sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
    ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
   }
   stage('Destroy instance'){
