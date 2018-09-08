@@ -4,7 +4,7 @@ node ('node1'){
   }
   stage('Ansible lint checking'){   
       sh "ansible-lint ansible/*.yml || exit 0";     
-      sh "ansible-lint ansible/roles || exit 0"
+      sh "ansible-lint ansible/roles/ || exit 0"
   }  
    stage('Deploy instance'){
     sh "terraform apply -auto-approve"
