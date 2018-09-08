@@ -3,13 +3,13 @@ node ('node1'){
     git 'https://github.com/egormin/test_pipeline'
   }
    stage('Deploy instance'){
-    sh "terraform apply -auto-approve"
+    //sh "terraform apply -auto-approve"
   }
    stage('deploy'){
     echo "OK"
   }
-   stage('check'){
-    echo "OK"
+   stage('Ansible'){
+   sh "ansible --version"
   }
   stage('Destroy instance'){
     //sh "terraform destroy -auto-approve"
