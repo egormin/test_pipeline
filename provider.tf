@@ -32,3 +32,8 @@ resource "aws_instance" "Cenos7" {
   }
   security_groups = [ "allow_ssh" ]
 }
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = "${aws_instance.Cenos7.id}"
+  allocation_id = "eipalloc-002266b257d2b88a3"
+}
