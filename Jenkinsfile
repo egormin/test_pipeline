@@ -11,6 +11,7 @@ node ('node1'){
        stage("Runing func tests") {
        sh "This is branch b"
                 }
+    }
 
       
       
