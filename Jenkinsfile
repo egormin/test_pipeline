@@ -3,6 +3,16 @@ node ('node1'){
   stage('Checkout code'){
     git 'https://github.com/egormin/test_pipeline'
   }
+       parallel(
+      a: {
+        echo "This is branch a"
+      },
+      b: {
+        echo "This is branch b"
+      }
+    )
+      
+      
   stage('Ansible syntax checking'){   
        ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml', extras: '--syntax-check'
   } 
