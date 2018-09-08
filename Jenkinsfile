@@ -11,4 +11,7 @@ node ('node1'){
    stage('check'){
     echo "OK"
   }
+  stage('Destroy instance'){
+    sh "terraform destroy -auto-approve"
+  }
 }
