@@ -9,7 +9,7 @@
   #- tomcat
 
   tasks:
-  - shell: echo 'Running'
+  - \shell: echo 'Running'
   
   - name: print to stdout
     command: "uname -a"
