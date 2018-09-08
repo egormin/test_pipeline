@@ -8,9 +8,9 @@ node ('node1'){
    stage('deploy'){
     echo "OK"
   }
-   stage('Ansible'){
-   ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
-  }
+   //stage('Ansible'){
+   //ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
+  //}
   stage('Destroy instance'){
     sh "terraform destroy -auto-approve"
     //echo "OK"
