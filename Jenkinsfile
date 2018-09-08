@@ -3,10 +3,10 @@ node ('node1'){
     git 'https://github.com/egormin/test_pipeline'
   }
   stage('Ansible lint checking'){
-    step {
+    steps {
       sh "ansible-lint ansible/*.yml || exit 0"
     }
-    step {
+    steps {
       sh "ansible-lint ansible/roles || exit 0"
     }
   }  
