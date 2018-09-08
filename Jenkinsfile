@@ -2,6 +2,9 @@ node ('node1'){
   stage('Checkout code'){
     git 'https://github.com/egormin/test_pipeline'
   }
+  stage('Init Terraform'){
+   echo id
+  }
    stage('Init Terraform'){
    sh "terraform init"
   }
