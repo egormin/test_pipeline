@@ -1,6 +1,6 @@
 node ('node1'){
    timestamps {
-  stage('Checkout code'){
+  stage(){
     git 'https://github.com/egormin/test_pipeline'
   }
   stage('Ansible syntax checking'){   
