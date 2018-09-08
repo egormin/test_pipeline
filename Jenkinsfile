@@ -17,15 +17,8 @@ node ('node1'){
    sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
    ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
   }
-  stage('Destroy instance'){
-    always {
+  stage('Destroy instance'){   
     sh "terraform destroy -auto-approve"
     //echo "OK"
-    }
-  }
-  post {
-    always {
-      sh "terraform destroy -auto-approve"
-    }
   }
 }
