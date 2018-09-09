@@ -28,7 +28,7 @@ node ('node1'){
   stage('Running analysis tool'){
       sh "ssh centos@52.15.177.245 cd /home/centos/cis-cat-full/"
       sh "ssh centos@52.15.177.245 pwd"
-      sh "ssh centos@52.15.177.245  cd /home/centos/cis-cat-full/ && sudo ./CIS-CAT.sh -s -aa -b CIS_CentOS_Linux_7_Benchmark_v2.2.0-oval.xml -p 'Level 2 - Server' --verbose -a"     
+      sh "ssh centos@52.15.177.245 \"cd /home/centos/cis-cat-full/ && sudo ./CIS-CAT.sh -s -aa -b CIS_CentOS_Linux_7_Benchmark_v2.2.0-oval.xml -p 'Level 2 - Server' --verbose -a\""     
   }  
    //stage('Ansible applying'){
     //sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
