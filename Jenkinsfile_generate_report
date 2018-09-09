@@ -2,17 +2,7 @@ node ('node1'){
    timestamps {
   stage('Checkout code'){
     git 'https://github.com/egormin/test_pipeline'
-  }        
-  stage('Ansible syntax checking'){   
-       ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml', extras: '--syntax-check'
-  } 
-  stage('Ansible style checking'){   
-      sh "ansible-lint ansible/*.yml || exit 0";     
-      sh "ansible-lint ansible/roles/ || exit 0"
-  }   
-   stage('Check report generation'){
-    echo "OK"
-  }
+  }     
    stage('Deploy ec2 instance'){
       sh "terraform apply -auto-approve"
       sleep 20
@@ -32,7 +22,7 @@ node ('node1'){
       sh "scp -o 'StrictHostKeyChecking no' centos@52.15.177.245:/home/centos/report.html ."
   }   
    stage('Publish HTML report'){
-     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report.html', reportName: 'HTML Report', reportTitles: '']) 
+     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report.html', reportName: 'CIS Report', reportTitles: '']) 
   } 
   //stage('Ansible applying'){
     //sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
