@@ -17,13 +17,17 @@ node ('node1'){
       sh "terraform apply -auto-approve"
       sleep 20
   }  
-   stage('Copying analysis tool'){
+   stage('Copying and preparing analysis tool'){
       sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
       sh "scp -o 'StrictHostKeyChecking no' -r ~/cs.zip centos@52.15.177.245:/tmp"
       sh "ssh centos@52.15.177.245 ls /tmp"
       sh "ssh centos@52.15.177.245 sudo yum install unzip java -y"
-      sh "ssh centos@52.15.177.245 unzip /tmp/cs.zip"
+      sh "ssh centos@52.15.177.245 unzip -o /tmp/cs.zip"
       sh "ssh centos@52.15.177.245 chmod +x ~/cis-cat-full/*.sh"     
+  }    
+  stage('Running analysis tool'){
+      sh "ssh centos@52.15.177.245 cd ~/cis-cat-full/"
+      sh "ssh centos@52.15.177.245  sudo ./CIS-CAT.sh -s -aa -b CIS_CentOS_Linux_7_Benchmark_v2.2.0-oval.xml -p "Level 2 - Server" --verbose -a"     
   }  
    //stage('Ansible applying'){
     //sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
