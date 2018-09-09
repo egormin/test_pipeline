@@ -19,7 +19,7 @@ node ('node1'){
   }  
    stage('Copying analysis tool'){
       sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
-      sh "scp -o 'StrictHostKeyChecking no' -r /tmp/xxx.xxx centos@52.15.177.245:/tmp"
+      sh "scp -o 'StrictHostKeyChecking no' -r ~/cs.zip centos@52.15.177.245:/tmp"
       sh "ls /tmp"
   }  
    //stage('Ansible applying'){
