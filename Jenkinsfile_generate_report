@@ -30,8 +30,11 @@ node ('node1'){
       sh "ssh centos@52.15.177.245 pwd"
       sh "ssh centos@52.15.177.245 \"cd /home/centos/cis-cat-full/; sudo ./CIS-CAT.sh -s -aa -b CIS_CentOS_Linux_7_Benchmark_v2.2.0-oval.xml -p 'Level 2 - Server' --verbose -a -rn report -r /home/centos\""     
       sh "scp -o 'StrictHostKeyChecking no' centos@52.15.177.245:/home/centos/report.html ."
-  }  
-   //stage('Ansible applying'){
+  }   
+   stage('Publish HTML report'){
+     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report.html', reportName: 'HTML Report', reportTitles: '']) 
+  } 
+  //stage('Ansible applying'){
     //sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
     //ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
   //}
