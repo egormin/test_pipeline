@@ -1,36 +1,31 @@
 node ('node1'){
-   timestamps {
-  stage('Checkout code'){
-    git 'https://github.com/egormin/test_pipeline'
-  }     
-   stage('Deploy ec2 instance'){
-      sh "terraform apply -auto-approve"
-      sleep 20
-  }  
-   stage('Copying and preparing analysis tool'){
+  timestamps {
+    stage('Checkout code'){
+      git 'https://github.com/egormin/test_pipeline'
+    }     
+     stage('Deploy ec2 instance'){
+       sh "terraform apply -auto-approve"
+       sleep 20
+    }  
+    stage('Copying and preparing analysis tool'){
       sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
       sh "scp -o 'StrictHostKeyChecking no' -r ~/cs.zip centos@52.15.177.245:/tmp"
       sh "ssh centos@52.15.177.245 ls /tmp"
       sh "ssh centos@52.15.177.245 sudo yum install unzip java -y"
       sh "ssh centos@52.15.177.245 unzip -o /tmp/cs.zip"
       sh "ssh centos@52.15.177.245 chmod +x /home/centos/cis-cat-full/*.sh"     
-  }    
-  stage('Running analysis tool'){
+    }    
+    stage('Running analysis tool'){
       sh "ssh centos@52.15.177.245 cd /home/centos/cis-cat-full/"
       sh "ssh centos@52.15.177.245 pwd"
       sh "ssh centos@52.15.177.245 \"cd /home/centos/cis-cat-full/; sudo ./CIS-CAT.sh -s -aa -b CIS_CentOS_Linux_7_Benchmark_v2.2.0-oval.xml -p 'Level 2 - Server' --verbose -a -rn report -r /home/centos\""     
       sh "scp -o 'StrictHostKeyChecking no' centos@52.15.177.245:/home/centos/report.html ."
-  }   
-   stage('Publish HTML report'){
-     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report.html', reportName: 'CIS Report', reportTitles: '']) 
-  } 
-  //stage('Ansible applying'){
-    //sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
-    //ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
-  //}
-  //stage('Destroy instance'){   
-    //sh "terraform destroy -auto-approve"
-    //echo "OK"
-  //}
+    }   
+    stage('Publish HTML report'){
+      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'report.html', reportName: 'CIS Report', reportTitles: '']) 
+    } 
+    stage('Destroy instance'){   
+      sh "terraform destroy -auto-approve"
+    }
   }
 }
