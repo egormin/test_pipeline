@@ -21,7 +21,8 @@ node ('node1'){
       sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
       sh "scp -o 'StrictHostKeyChecking no' -r ~/cs.zip centos@52.15.177.245:/tmp"
       sh "ssh centos@52.15.177.245 ls /tmp"
-      sh "ssh centos@52.15.177.245 yum install unzip -y"
+      sh "ssh centos@52.15.177.245 sudo yum install unzip -y"
+      sh "ssh centos@52.15.177.245 unzip cs.zip"
   }  
    //stage('Ansible applying'){
     //sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
