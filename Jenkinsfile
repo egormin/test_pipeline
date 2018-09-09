@@ -2,20 +2,7 @@ node ('node1'){
    timestamps {
   stage('Checkout code'){
     git 'https://github.com/egormin/test_pipeline'
-  }
-      
-    parallel 'Unit tests': {
-                stage("Runing unit tests") {
-       sh "echo AAA"
-                   sleep 5
-                }
-       stage("Runing func tests") {
-         sh "echo BBB"
-                }
-    }
-
-      
-      
+  }        
   stage('Ansible syntax checking'){   
        ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml', extras: '--syntax-check'
   } 
