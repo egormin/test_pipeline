@@ -14,6 +14,7 @@ node ('node1'){
     echo "OK"
   }
    stage('Deploy ec2 instance'){
+    sh "terraform init"
     sh "terraform apply -auto-approve"
     sleep 20
   }  
