@@ -35,7 +35,7 @@ node ('node1'){
     //echo "OK"
   }
        stage('Junit report'){   
-    junit 'report/junit.xml'
+    junit 'reports/junit.xml'
     //echo "OK"
   }  
   }
