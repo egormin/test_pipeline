@@ -30,5 +30,9 @@ node ('node1'){
     sh "terraform destroy -auto-approve"
     //echo "OK"
   }
+      stage('Allure report'){   
+    allure includeProperties: false, jdk: '', results: [[path: 'reports/junit.xml']]
+    //echo "OK"
+  }
   }
 }
