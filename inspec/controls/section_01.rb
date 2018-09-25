@@ -31,3 +31,31 @@ control 'inspec-profile-cis-security-1.1.1.2' do
     #it { should be_disabled }
   end
 end
+
+control 'inspec-profile-cis-security-1.1.1.3' do
+  title 'Ensure mounting of jffs2 filesystems is disabled'
+  desc  "The jffs2 (journaling flash filesystem 2) filesystem type is a log-structured filesystem used in flash memory devices.\n\nRationale: Removing support for unneeded filesystem types reduces the local attack surface of the system. If this filesystem type is not needed, disable it."
+  impact 1.0
+
+  tag cis: 'distribution-independent-linux:1.1.1.3'
+  tag level: 1
+
+  describe kernel_module('jffs2') do
+    it { should_not be_loaded }
+    it { should be_disabled }
+  end
+end
+
+control 'inspec-profile-cis-security-1.1.1.4' do
+  title 'Ensure mounting of hfs filesystems is disabled'
+  desc  "The hfs filesystem type is a hierarchical filesystem that allows you to mount Mac OS filesystems.\n\nRationale: Removing support for unneeded filesystem types reduces the local attack surface of the system. If this filesystem type is not needed, disable it."
+  impact 1.0
+
+  tag cis: 'distribution-independent-linux:1.1.1.4'
+  tag level: 1
+
+  describe kernel_module('hfs') do
+    it { should_not be_loaded }
+    it { should be_disabled }
+  end
+end
