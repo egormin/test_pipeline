@@ -24,7 +24,7 @@ node ('node1'){
   }
   stage('Inspec tests'){
     sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
-    sh "inspec exec inspec/controls/section_01.rb -t ssh://egor@52.15.177.245"
+    sh "inspec exec inspec/controls/section_01.rb -t ssh://centos@52.15.177.245"
   }
   stage('Destroy instance'){   
     sh "terraform destroy -auto-approve"
