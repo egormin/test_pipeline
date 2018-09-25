@@ -31,7 +31,7 @@ node ('node1'){
     //echo "OK"
   }
       stage('Allure report'){   
-    allure includeProperties: false, jdk: '', results: [[path: 'reports/junit.xml']]
+    allure includeProperties: false, jdk: '', results: [[path: 'reports/']]
     //echo "OK"
   }
        stage('Junit report'){   
