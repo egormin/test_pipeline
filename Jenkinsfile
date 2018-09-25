@@ -37,10 +37,9 @@ node ('node1'){
     stage('Allure report6'){   
     allure includeProperties: false, jdk: '', results: [[path: 'reports6/']]
   }
- //   stage('Allure report7'){   
- //   allure includeProperties: false, jdk: '', results: [[path: 'reports7/']]
- //   //echo "OK"
- // }
+    stage('Allure report7'){   
+    allure includeProperties: false, jdk: '', results: [[path: 'reports7/']] 
+  }
   //     stage('Junit report'){   
   //  junit 'reports/junit.xml'
     //echo "OK"
