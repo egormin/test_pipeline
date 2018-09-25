@@ -34,17 +34,17 @@ node ('node1'){
     sh "terraform destroy -auto-approve"
     //echo "OK"
   }
-    stage('Allure report6'){   
-    allure includeProperties: false, jdk: '', results: [[path: 'reports/']]
-    //echo "OK"
-  }
+ //   stage('Allure report6'){   
+ //   allure includeProperties: false, jdk: '', results: [[path: 'reports/']]
+ //   //echo "OK"
+//  }
  //   stage('Allure report7'){   
  //   allure includeProperties: false, jdk: '', results: [[path: 'reports7/']]
  //   //echo "OK"
  // }
-       stage('Junit report'){   
-    junit 'reports/junit.xml'
+  //     stage('Junit report'){   
+  //  junit 'reports/junit.xml'
     //echo "OK"
-  }  
+ // }  
   }
 }
