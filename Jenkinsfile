@@ -22,16 +22,24 @@ node ('node1'){
     sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
     ansiblePlaybook inventory: 'ansible/inventory', playbook: 'ansible/playbook.yml'
   }
-  stage('Inspec tests'){
+  stage('Inspec tests centos6'){
     sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
-    sh "inspec exec inspec/controls/section_01.rb -t ssh://centos@52.15.177.245 --reporter junit:reports/junit.xml -i ~/.ssh/id_rsa"
+    sh "inspec exec inspec/controls/section_01.rb -t ssh://centos@52.15.177.245 --reporter junit:reports6/junit.xml -i ~/.ssh/id_rsa"
+  }
+    stage('Inspec tests centos7'){
+    sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
+    sh "inspec exec inspec/controls/section_01.rb -t ssh://centos@52.15.177.245 --reporter junit:reports7/junit.xml -i ~/.ssh/id_rsa"
   }
   stage('Destroy instance'){   
     sh "terraform destroy -auto-approve"
     //echo "OK"
   }
-      stage('Allure report'){   
-    allure includeProperties: false, jdk: '', results: [[path: 'reports/']]
+    stage('Allure report6'){   
+    allure includeProperties: false, jdk: '', results: [[path: 'reports6/']]
+    //echo "OK"
+  }
+    stage('Allure report7'){   
+    allure includeProperties: false, jdk: '', results: [[path: 'reports7/']]
     //echo "OK"
   }
        stage('Junit report'){   
