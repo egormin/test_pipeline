@@ -26,10 +26,10 @@ node ('node1'){
     sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
     sh "inspec exec inspec/controls/section_01.rb -t ssh://centos@52.15.177.245 --reporter junit:reports6/junit.xml -i ~/.ssh/id_rsa"
   }
-    stage('Inspec tests centos7'){
-    sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
-    sh "inspec exec inspec/controls/section_01.rb -t ssh://centos@52.15.177.245 --reporter junit:reports7/junit.xml -i ~/.ssh/id_rsa"
-  }
+   // stage('Inspec tests centos7'){
+   // sh "ssh-keygen -f ~/.ssh/known_hosts -R 52.15.177.245"
+   // sh "inspec exec inspec/controls/section_01.rb -t ssh://centos@52.15.177.245 --reporter junit:reports7/junit.xml -i ~/.ssh/id_rsa"
+ // }
   stage('Destroy instance'){   
     sh "terraform destroy -auto-approve"
     //echo "OK"
